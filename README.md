@@ -1,5 +1,10 @@
 # Govisetha-Lotteries
 
+<p align="center">
+  <img src="https://cdn.discordapp.com/attachments/940889393974104084/1070015552845795408/logo.png" />
+</p>
+
+
 Scrap the [Sri Lanka's Govisetha Lottery's Past Results](https://www.nlb.lk/results/govisetha) and analyze them to get the most repeated values.
 
 ## How to Setup?
