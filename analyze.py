@@ -1,25 +1,18 @@
-import csv, os, collections
+import os 
+import pandas as pd
 
 filename = "data.csv"
 
-with open(filename, 'r') as csvfile:
-    reader = csv.reader(csvfile)
-    loaded_dataset = [row[:] for row in reader]
+df = pd.read_csv(filename)
 
-values_only = []
-for line in loaded_dataset:
-    for number in line:
-        values_only.append(number)
+values_only = df.values.flatten()
 
-counter = collections.Counter(values_only)
+counter = pd.Series(values_only).value_counts().to_dict()
 
-data = dict(counter)
-repeats_sorted = sorted(data.items(), key=lambda x:x[1], reverse=True)
+repeats_sorted = sorted(counter.items(), key=lambda x:x[1], reverse=True)
 
 if os.path.isfile("repeats.csv"):
     os.remove("repeats.csv")
 
-with open("repeats.csv", "w", encoding="utf-8") as _file:
-    for repeat in repeats_sorted:
-        _file.write(f"{repeat[0]},{repeat[1]}\n")
-        print(repeat)
+df = pd.DataFrame(repeats_sorted, columns=['Value', 'Count'])
+df.to_csv('repeats.csv', index=False)
