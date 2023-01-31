@@ -1,5 +1,6 @@
 # Analyzed Data and Scraped Data
 *.csv
+*.png
 data.csv
 
 
